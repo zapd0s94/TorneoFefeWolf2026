@@ -868,3 +868,57 @@ footer{ visibility: hidden !important; height: 0 !important; }
     font-size: 22px !important;
   }
 }
+/* ==========================
+   MOBILE FIX: pantalla negra
+   ========================== */
+
+/* fondo consistente */
+html, body, [data-testid="stAppViewContainer"], .stApp{
+  background: #06060a !important;
+}
+
+/* que el contenido no quede tapado/colapsado */
+@media (max-width: 900px){
+
+  /* Streamlit container */
+  .block-container{
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    padding-top: 14px !important;
+    max-width: 100% !important;
+  }
+
+  /* Evita desbordes horizontales que rompen el layout en mobile */
+  html, body{
+    overflow-x: hidden !important;
+  }
+
+  /* Sidebar: NO fijo en mobile (si queda fijo te tapa todo y ves negro) */
+  section[data-testid="stSidebar"]{
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Main: sin margen raro */
+  [data-testid="stAppViewContainer"] section.main{
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Imágenes y tablas responsivas */
+  img{
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .fw-table-wrap, .stDataFrame{
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* Quitar footer/barra que a veces deja blanco o negro raro */
+footer, header[data-testid="stHeader"]{
+  background: transparent !important;
+}
