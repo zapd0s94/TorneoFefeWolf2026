@@ -1483,7 +1483,7 @@ def pantalla_cargar_predicciones():
 
         with cr:
             st.subheader(f"Carrera - {gp_actual}")
-            st.info("1°(25) - 2°(18) - 3°(15) - 4°(12) - 5°(10) | Pleno: +5 Pts")
+            st.info("1°(25) 2°(18) 3°(15) 4°(12) 5°(10) 6°(8) 7°(6) 8°(4) 9°(2) 10°(1) | Pleno: +5 Pts")
             for i in range(1, 11):
                 r_data[i] = st.text_input(
                     f"Posición {i}° (Carrera)",
@@ -1825,4 +1825,5 @@ def main():
         
         
 if __name__ == "__main__":
+
         main()   
