@@ -196,7 +196,14 @@ def conectar_google_sheets(nombre_hoja="sheet1"):
     ]
 
     try:
-        creds = Credentials.from_service_account_file("credentials.json", scopes=scope)
+        # 1. Cargamos las credenciales desde los Secrets de Streamlit
+        creds_dict = st.secrets["GCP_SERVICE_ACCOUNT"]
+        
+        # 2. Creamos el objeto de credenciales usando el diccionario
+        from google.oauth2.service_account import Credentials
+        creds = Credentials.from_service_account_info(creds_dict, scopes=scope)
+        
+        # 3. Autorizamos a gspread
         client = gspread.authorize(creds)
 
         ss = client.open("TorneoFefe2026_DB")
@@ -665,5 +672,6 @@ def aplicar_sanciones_dns(gp: str, pilotos_torneo: list, gps_sprint: list):
             "Faltantes": ", ".join(miss) if miss else "-",
             "Penalización": penalty
         })
+
 
     return pd.DataFrame(rows)
