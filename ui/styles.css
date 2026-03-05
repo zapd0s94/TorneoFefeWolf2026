@@ -849,3 +849,22 @@ textarea::placeholder, input::placeholder{
   color: #a855f7 !important;
   opacity: 1 !important;
 }
+
+/* =========================================================
+   FW FIXES (mobile white bottom + stable background)
+   ========================================================= */
+html, body, [data-testid="stAppViewContainer"]{
+  background: #06060a !important;
+  min-height: 100vh !important;
+}
+
+footer{ visibility: hidden !important; height: 0 !important; }
+@media (max-width: 768px){
+  #fw-top-btn{
+    right: 12px !important;
+    bottom: 78px !important;
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 22px !important;
+  }
+}
