@@ -1,0 +1,7 @@
+streamlit
+pandas
+pytz
+requests
+altair
+gspread
+google-auth
