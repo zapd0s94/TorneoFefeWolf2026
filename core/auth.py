@@ -50,12 +50,15 @@ def _verify_secret(secret: str, stored: str) -> bool:
 # ---------------------------
 
 def _open_ws(nombre: str):
+    import streamlit as st
     sheet1 = conectar_google_sheets("sheet1")
     if not sheet1:
+        st.error("❌ conectar_google_sheets devolvió None — revisar database.py y secrets")
         return None
     try:
         return sheet1.spreadsheet.worksheet(nombre)
-    except Exception:
+    except Exception as e:
+        st.error(f"❌ Error abriendo hoja '{nombre}': {e}")
         return None
 
 def _users_ws():
@@ -293,4 +296,5 @@ def verify_pin(usuario: str, pin: str) -> bool:
         return False
 
     return _verify_secret(pin, stored)
+
 
