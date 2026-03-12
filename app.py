@@ -234,7 +234,7 @@ DRIVER_PHOTOS = {
     "Gabriel Bortoleto": "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1740000000/common/f1/2026/audi/gabbor01/2026audigabbor01right.webp",
     "Pierre Gasly":      "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000000/common/f1/2026/alpine/piegas01/2026alpinepiegas01right.webp",
     "Franco Colapinto":  "https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000000/common/f1/2026/alpine/fracol01/2026alpinefracol01right.webp",
-    "Checo Perez":       "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/S/SERPER01_Sergio_Perez/serper01.png.transform/2col/image.png",
+    "Checo Perez":       "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1740000000/common/f1/2026/cadillac/serper01/2026cadillacserper01right.webp",
     "Valteri Bottas":    "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/v1740000000/common/f1/2026/cadillac/valbot01/2026cadillacvalbot01right.webp",
 }
 MESA_CHICA_MODS   = {"Valteri Bottas","Lando Norris","Fernando Alonso"}
@@ -1560,5 +1560,6 @@ def main():
     elif "Test"         in opcion: pantalla_api_test()
 
     flecha_arriba()
+
 
 main()
