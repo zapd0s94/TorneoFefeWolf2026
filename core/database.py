@@ -220,7 +220,7 @@ def conectar_google_sheets(nombre_hoja="sheet1"):
 
     try:
         # ✅ Lee desde st.secrets (funciona en Streamlit Cloud)
-        creds_dict = dict(st.secrets["gcp_service_account"])
+        creds_dict = dict(st.secrets["GCP_SERVICE_ACCOUNT"])
         creds = Credentials.from_service_account_info(creds_dict, scopes=scope)
         client = gspread.authorize(creds)
         ss = client.open("TorneoFefe2026_DB")
@@ -691,3 +691,4 @@ def aplicar_sanciones_dns(gp: str, pilotos_torneo: list, gps_sprint: list):
 
 
     return pd.DataFrame(rows)
+
