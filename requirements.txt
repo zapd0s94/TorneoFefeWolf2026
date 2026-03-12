@@ -1,8 +1,0 @@
-streamlit
-pandas
-pytz
-requests
-altair
-gspread
-plotly
-google-auth
