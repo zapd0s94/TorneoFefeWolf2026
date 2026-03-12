@@ -217,23 +217,30 @@ def conectar_google_sheets(nombre_hoja="sheet1"):
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive",
     ]
-
     try:
-        # ✅ Lee desde st.secrets (funciona en Streamlit Cloud)
-        creds_dict = dict(st.secrets["GCP_SERVICE_ACCOUNT"])
-        creds = Credentials.from_service_account_info(creds_dict, scopes=scope)
+        creds_info = {
+            "type": st.secrets["GCP_SERVICE_ACCOUNT"]["type"],
+            "project_id": st.secrets["GCP_SERVICE_ACCOUNT"]["project_id"],
+            "private_key_id": st.secrets["GCP_SERVICE_ACCOUNT"]["private_key_id"],
+            "private_key": st.secrets["GCP_SERVICE_ACCOUNT"]["private_key"],
+            "client_email": st.secrets["GCP_SERVICE_ACCOUNT"]["client_email"],
+            "client_id": st.secrets["GCP_SERVICE_ACCOUNT"]["client_id"],
+            "auth_uri": st.secrets["GCP_SERVICE_ACCOUNT"]["auth_uri"],
+            "token_uri": st.secrets["GCP_SERVICE_ACCOUNT"]["token_uri"],
+            "auth_provider_x509_cert_url": st.secrets["GCP_SERVICE_ACCOUNT"]["auth_provider_x509_cert_url"],
+            "client_x509_cert_url": st.secrets["GCP_SERVICE_ACCOUNT"]["client_x509_cert_url"],
+        }
+        creds = Credentials.from_service_account_info(creds_info, scopes=scope)
         client = gspread.authorize(creds)
         ss = client.open("TorneoFefe2026_DB")
 
         if nombre_hoja and nombre_hoja != "sheet1":
             return ss.worksheet(nombre_hoja)
-
         return ss.sheet1
 
     except Exception as e:
-        st.error(f"Error al conectar: {e}")  # Temporal para ver el error real
+        st.error(f"❌ Error Google Sheets: {e}")
         return None
-
 
 # ==============================================================================
 # HELPERS predicciones (sheet1)
@@ -691,4 +698,5 @@ def aplicar_sanciones_dns(gp: str, pilotos_torneo: list, gps_sprint: list):
 
 
     return pd.DataFrame(rows)
+
 
