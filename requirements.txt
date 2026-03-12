@@ -4,4 +4,5 @@ pytz
 requests
 altair
 gspread
+plotly
 google-auth
