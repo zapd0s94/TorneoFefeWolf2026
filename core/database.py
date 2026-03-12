@@ -219,7 +219,9 @@ def conectar_google_sheets(nombre_hoja="sheet1"):
     ]
 
     try:
-        creds = Credentials.from_service_account_file("credentials.json", scopes=scope)
+        # ✅ Lee desde st.secrets (funciona en Streamlit Cloud)
+        creds_dict = dict(st.secrets["gcp_service_account"])
+        creds = Credentials.from_service_account_info(creds_dict, scopes=scope)
         client = gspread.authorize(creds)
         ss = client.open("TorneoFefe2026_DB")
 
@@ -228,7 +230,8 @@ def conectar_google_sheets(nombre_hoja="sheet1"):
 
         return ss.sheet1
 
-    except Exception:
+    except Exception as e:
+        st.error(f"Error al conectar: {e}")  # Temporal para ver el error real
         return None
 
 
@@ -685,5 +688,6 @@ def aplicar_sanciones_dns(gp: str, pilotos_torneo: list, gps_sprint: list):
             "Faltantes": ", ".join(miss) if miss else "-",
             "Penalización": penalty
         })
+
 
     return pd.DataFrame(rows)
