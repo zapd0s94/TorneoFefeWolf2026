@@ -1163,7 +1163,7 @@ def pantalla_inicio():
         }} else if(now<tClose){{
           upd(tClose-now);
           if(lbl)lbl.textContent="⚡ PREDICCIONES ABIERTAS — CIERRAN EN";
-          if(sub)sub.innerHTML="Cierre: <b>Sáb 28 Mar · 03:00 ARG</b>";
+          if(sub)sub.innerHTML="Cierre: <b>Domingo 29 Mar · 01:00 ARG</b>";
         }} else if(now<tRace){{
           document.getElementById("fw-countdown").innerHTML=
             "<b style='color:#ff6644;font-size:15px;'>🔴 PREDICCIONES CERRADAS</b>";
