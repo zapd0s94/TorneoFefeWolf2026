@@ -1091,9 +1091,9 @@ def pantalla_inicio():
     # Carrera Dom 29 Mar 05:00 UTC (02:00 ARG)
     # Predicciones abren 72h antes → Jue 26 Mar 05:00 UTC (02:00 ARG)  
     # Predicciones cierran → Sáb 28 Mar 06:00 UTC (03:00 ARG)
-    _t_open  = "2026-03-26 05:00"
-    _t_close = "2026-03-28 06:00"
-    _t_race  = "2026-03-29 05:00"
+    _t_open  = "2026-03-26 02:00"
+    _t_close = "2026-03-29 01:00"
+    _t_race  = "2026-03-29 02:00"
 
     _chtml = f"""
     <style>
