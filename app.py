@@ -220,7 +220,7 @@ API_BASE = "http://127.0.0.1:8000"
 HORARIOS_CARRERA = {
     "01. Gran Premio de Australia":     "2026-03-08 01:00",
     "02. Gran Premio de China":         "2026-03-15 04:00",
-    "03. Gran Premio de Japón":         "2026-03-23 02:00",
+    "03. Gran Premio de Japón":         "2026-03-29 02:00",
     "04. Gran Premio de Baréin":        "2026-04-12 12:00",
     "05. Gran Premio de Arabia Saudita":"2026-04-19 14:00",
     "06. Gran Premio de Miami":         "2026-05-03 17:00",
