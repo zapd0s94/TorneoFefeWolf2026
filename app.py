@@ -3379,7 +3379,20 @@ def main():
     ]
     if is_admin(): opciones.append("🧪  Test API F1")
 
-    opcion = st.sidebar.radio("", opciones, index=0, label_visibility="collapsed")
+    # ── Navegación persistente: inicializar si no existe ──
+    if "_main_nav" not in st.session_state:
+        st.session_state["_main_nav"] = opciones[0]
+
+    # Si un botón rápido forzó navegación, actualizar el estado del radio
+    _nav = st.session_state.pop("fw_force_nav", None)
+    if _nav:
+        for _o in opciones:
+            if _nav in _o:
+                st.session_state["_main_nav"] = _o
+                break
+
+    opcion = st.sidebar.radio("", opciones, key="_main_nav", label_visibility="collapsed")
+
     st.sidebar.markdown("---")
     st.sidebar.markdown(
         '<div style="text-align:center;font-size:11px;color:rgba(169,178,214,.40);">'
@@ -3387,8 +3400,6 @@ def main():
         unsafe_allow_html=True
     )
 
-    _nav = st.session_state.pop("fw_force_nav", None)
-    if _nav: opcion = _nav
     if   "Inicio"       in opcion: pantalla_inicio()
     elif "Calendario"   in opcion: pantalla_calendario()
     elif "Predicciones" in opcion: pantalla_cargar_predicciones()
@@ -3402,9 +3413,8 @@ def main():
     elif "Mesa"         in opcion: pantalla_mesa_chica()
     elif "Test"         in opcion: pantalla_api_test()
 
-    # ── Elementos flotantes globales ──────────────────────
-    mini_bar()      # Botón ☰ para ocultar/mostrar el menú lateral
-    flecha_arriba() # Flecha dorada ↑ para volver al inicio
+    mini_bar()
+    flecha_arriba()
 
 
 main()
